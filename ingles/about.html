@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sparky - About Sparky</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Biography of Sparky, the clay puppet with the spark of joy." name="keywords">
+    <meta content="The story of Sparky, a clay puppet created to bring happiness, his strengths and weaknesses."
+        name="description">
+
+    <link href="img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/costum.css" rel="stylesheet">
+
+    <style>
+        .sparky-game-container {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid #9C0015;
+            border-radius: 15px;
+            margin-top: 2rem;
+            background-color: #fce4ec;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .face-hole {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background-color: #96118A;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .face {
+            font-size: 2.5rem;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .face.hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="sparkles"></canvas>
+    <div class="container-fluid bg-primary py-3 d-none d-md-block">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-white navbar-light shadow p-lg-0">
+                <a href="index.html" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 display-4 text-primary"><span class="text-secondary">S</span>PARKY</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        <a href="index.html" class="nav-item nav-link">Home</a>
+                        <a href="about.html" class="nav-item nav-link active">About</a>
+                    </div>
+                    <a href="index.html" class="navbar-brand mx-5 d-none d-lg-block">
+                        <h1 class="m-0 display-4 text-primary"><span class="text-secondary">S</span>PARKY</h1>
+                    </a>
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="gallery.html" class="nav-item nav-link">Gallery</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid page-header"
+        style="margin-bottom: 90px; background-image: url('img/Sparky-magia.png'); background-size: cover; background-position: center;">
+        <div class="container text-center py-5">
+            <h1 class="text-white display-3 mt-lg-5">About Sparky</h1>
+            <div class="d-inline-flex align-items-center text-white">
+                <p class="m-0"><a class="text-white" href="">Home</a></p>
+                <i class="fa fa-circle px-3"></i>
+                <p class="m-0">About</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <h1 class="section-title position-relative text-center mb-5">The story of a clay puppet with a great
+                        mission</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 py-5">
+                    <h2 class="font-weight-bold mb-3">Name: Sparky</h2>
+                    <p class="mb-4">
+                        Sparky was created with deep love by the old woman Doña Clara, who molded him
+                        with magical clay from an ancient river. He was born on a small wooden shelf in Doña Clara's
+                        living room,
+                        with the secret mission of bringing joy to his owner. His original name was Fulgencio,
+                        but his spark of joy made everyone call him Sparky.
+                    </p>
+
+                    <div class="sparky-game-container">
+                        <h2 class="font-weight-bold mb-3">Sparky's Joyful Spark Game</h2>
+                        <p>Click on the sad faces to "spark" them into happy faces. Score as many points as you can in 30 seconds!</p>
+                        <div id="gameStatus" class="game-status">Score: 0 | Time: 30</div>
+                        <button id="startGameBtn" class="btn btn-secondary mb-3">Start Game</button>
+                        <div id="gameGrid" class="game-grid"></div>
+                    </div>
+
+                    <h2 class="font-weight-bold mb-3">Physical Description</h2>
+                    <p class="mb-4">
+                        Sparky is a clay puppet about 10 centimeters tall. His hair is a mess of red clay spikes,
+                        which always seems to be full of energy. He wears a purple volleyball uniform
+                        with the number 5 on the front, symbolizing his love for teamwork and collaboration.
+                        His eyes, though simple, express infinite kindness and deep empathy.
+                        Even though his legs are small and plump, his adventurous spirit does not stop him;
+                        he is always ready for a new adventure.
+                    </p>
+                    <h2 class="font-weight-bold mb-3">Special Power: The "Spark of Joy"</h2>
+                    <p class="mb-4">
+                        His power is the "Spark of Joy." Sparky can concentrate all the energy of his heart into
+                        a small and bright golden spark. When this spark touches a person, it infuses them with an
+                        immediate wave of optimism, erasing sadness and leaving a genuine smile. However,
+                        his power only activates when he himself feels deep compassion for the suffering of others.
+                    </p>
+                    <h2 class="font-weight-bold mb-3">Unique Characteristics</h2>
+                    <p class="mb-4">
+                        Aside from his power, Sparky's most special quality is his **resilience**. Although his clay
+                        body
+                        is fragile and can crack or break easily, Doña Clara always carefully repairs him,
+                        which symbolizes that joy can always be restored, even after the most difficult moments.
+                        His age is as immeasurable as the joy he has created; he has the age of a kind and wise soul.
+                    </p>
+                    <h2 class="font-weight-bold mb-3">What he likes and dislikes</h2>
+                    <p class="mb-4">
+                        Sparky likes to make people smile, the sound of laughter, the smell of wet earth
+                        after the rain, and having quiet conversations with Doña Clara. He dislikes seeing
+                        someone sad, prolonged darkness, and excessive noise that prevents him from concentrating to
+                        use his power.
+                    </p>
+                    <h2 class="font-weight-bold mb-3">Strengths and Weaknesses</h2>
+                    <p class="mb-4">
+                        His main strengths are his **empathy**, his **determination**, and his inexhaustible power
+                        of joy. However, his greatest weakness is his physical fragility, and the fact that he gets
+                        overwhelmed by too much sadness at once, which makes him vulnerable and makes it difficult for
+                        him to use his power.
+                    </p>
+                    <h2 class="font-weight-bold mb-3">Age</h2>
+                    <p class="mb-4">
+                        He's as old as the joy he created. You could say he's the age of a kind and wise soul.
+                    </p>
+                    <h2 class="font-weight-bold mb-3">Unusual Things (Photo Gallery):</h2>
+                    <p class="mb-4">
+                        Sparky isn't afraid to explore. Here are some pictures of his adventures.
+                    </p>
+                    <h2 class="font-weight-bold mb-3">Favorite Food</h2>
+                    <p class="mb-4">
+                        Sparky doesn't need to eat, but if he could choose, his favorite food would be a chocolate
+                        mooncake, because of its shape and dark color, which would contrast with his Spark of Joy.
+                    </p>
+                    <h2 class="mb-4">Special Characteristics</h2>
+                    <p>Apart from his power, Sparky's most special quality is his resilience. Even if he cracks or
+                        breaks a little, Doña Clara always repairs him, symbolizing that joy can always be restored.</p>
+
+                    <h3 class="mb-4">What He Likes</h3>
+                    <ul>
+                        <li>Making people smile.</li>
+                        <li>The sound of laughter.</li>
+                        <li>The smell of wet earth after the rain.</li>
+                        <li>Calm conversations with Doña Clara.</li>
+                    </ul>
+
+                    <h3 class="mb-4">What He Dislikes</h3>
+                    <ul>
+                        <li>Seeing someone sad.</li>
+                        <li>Prolonged darkness.</li>
+                        <li>Excessive noise that prevents him from concentrating to use his power.</li>
+                    </ul>
+
+                    <h3 class="mb-4">Strengths and Weaknesses</h3>
+                    <ul>
+                        <li><strong>Strengths:</strong> His empathy, determination, and inexhaustible power of joy.</li>
+                        <li><strong>Weaknesses:</strong> He is very fragile, as he is made of clay. In addition, if he
+                            sees too much sadness at once, he feels overwhelmed and struggles to use his power.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid footer bg-light py-5" style="margin-top: 90px;">
+        <div class="container text-center py-5">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <a href="index.html" class="navbar-brand m-0">
+                        <h1 class="m-0 mt-n2 display-4 text-primary"><span class="text-secondary">S</span>PARKY</h1>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <p class="m-0">&copy; <a href="#">2025</a> made by <a>Lina Vanessa</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="btn btn-secondary px-2 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        const gameGrid = document.getElementById('gameGrid');
+        const startGameBtn = document.getElementById('startGameBtn');
+        const gameStatus = document.getElementById('gameStatus');
+        let score = 0;
+        let timeRemaining = 30;
+        let timerId = null;
+        let gameRunning = false;
+
+        function createGrid() {
+            gameGrid.innerHTML = '';
+            for (let i = 0; i < 16; i++) {
+                const faceHole = document.createElement('div');
+                faceHole.className = 'face-hole';
+                const face = document.createElement('span');
+                face.className = 'face hidden';
+                face.textContent = '😔';
+                faceHole.appendChild(face);
+                gameGrid.appendChild(faceHole);
+            }
+        }
+
+        function randomTime(min, max) {
+            return Math.round(Math.random() * (max - min) + min);
+        }
+
+        function randomHole() {
+            const faces = document.querySelectorAll('.face');
+            const index = Math.floor(Math.random() * faces.length);
+            return faces[index];
+        }
+
+        function appearFace() {
+            if (!gameRunning) return;
+            const face = randomHole();
+            face.classList.remove('hidden');
+
+            const appearTime = randomTime(500, 1500);
+            setTimeout(() => {
+                face.classList.add('hidden');
+                appearFace();
+            }, appearTime);
+        }
+
+        function startGame() {
+            if (gameRunning) return;
+            gameRunning = true;
+            score = 0;
+            timeRemaining = 30;
+            gameStatus.textContent = `Score: ${score} | Time: ${timeRemaining}`;
+            startGameBtn.disabled = true;
+
+            createGrid();
+            appearFace();
+
+            const faces = document.querySelectorAll('.face');
+            faces.forEach(face => {
+                face.addEventListener('click', () => {
+                    if (face.textContent === '😔' && gameRunning) {
+                        face.textContent = '😊';
+                        score++;
+                        gameStatus.textContent = `Score: ${score} | Time: ${timeRemaining}`;
+                        setTimeout(() => {
+                            face.textContent = '😔';
+                            face.classList.add('hidden');
+                        }, 500);
+                    }
+                });
+            });
+
+            timerId = setInterval(() => {
+                timeRemaining--;
+                gameStatus.textContent = `Score: ${score} | Time: ${timeRemaining}`;
+                if (timeRemaining <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            gameRunning = false;
+            clearInterval(timerId);
+            gameStatus.textContent = `Game Over! Final Score: ${score}`;
+            startGameBtn.disabled = false;
+            startGameBtn.textContent = 'Play Again';
+        }
+
+        startGameBtn.addEventListener('click', startGame);
+
+    </script>
+</body>
+
+</html>
