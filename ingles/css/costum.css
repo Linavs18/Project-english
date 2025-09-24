@@ -1,0 +1,213 @@
+/* =========== costum.css (corregido - paleta y tipografías de index2) =========== */
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@300;600;800&family=Creepster&display=swap');
+/* Variables (sin !important dentro de los valores) */
+:root {
+  --pink: #ff007f;   /* rosa neón (index2) */
+  --vio:  #a020f0;   /* violeta brillante (index2) */
+  --glass: rgba(255,255,255,0.05);
+
+  --primary: var(--pink);
+  --secondary: var(--vio);
+  --dark-bg: #0b0013;
+  --light: #ffffff;
+
+  --font-sans: "Oxanium", system-ui, sans-serif;
+  --font-title: "Creepster", cursive;
+}
+
+/* Tipografías base */
+body {
+  font-family: var(--font-sans);
+  color: var(--light);
+  background: radial-gradient(circle at 10% 10%, var(--dark-bg) 0%, #080008 40%, var(--dark-bg) 100%);
+}
+
+/* Títulos con Creepster + glow (index2 look) */
+h1, h2, h3, h4, .display-3, .display-4 {
+  font-family: var(--font-title);
+  color: var(--primary);
+  text-shadow: 0 0 14px var(--secondary);
+}
+
+/* Texto y enlaces (sin afectar todos los hijos con *) */
+.text-primary, a.text-primary { color: var(--primary) !important; }
+.text-secondary, a.text-secondary { color: var(--secondary) !important; }
+
+/* Fondos sólo sobre la clase, NO sobre los hijos */
+/* BIEN (solo el fondo del contenedor, no el texto interno) */
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+/* Bordes */
+.border-primary { border-color: var(--primary) !important; }
+.border-secondary { border-color: var(--secondary) !important; }
+
+/* Navbar: asegurar que quede sobre el canvas de sparkles */
+/* ===== Navbar estilo corregido ===== */
+.navbar {
+  background: #fff; /* Fondo blanco */
+  border-radius: 40px;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1000;
+}
+
+/* Quitar fondo sólido detrás */
+.nav-bar::before {
+  background: transparent !important;
+}
+
+/* Links de la navbar */
+.navbar-light .navbar-nav .nav-link {
+  color: #333;
+  font-weight: 500;
+  margin: 0 0.8rem;
+  transition: color 0.3s ease;
+}
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+  color: var(--primary) !important;
+}
+
+/* Logo centrado y con espacio */
+.navbar-brand {
+  font-family: "Creepster", cursive;
+  font-size: 1.6rem;
+  color: var(--primary) !important;
+}
+
+/* Sparkles atrás del contenido */
+#sparkles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Carousel caption más legible (estilo index2) */
+.carousel-caption {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  padding: 18px;
+}
+
+/* Iconos: usar color desde variables, no sobrescribir todo */
+.fa, .carousel-control-prev-icon, .carousel-control-next-icon {
+  color: var(--primary);
+  background: transparent;
+}
+
+/* Botones con estilo neón (úsalos con clases .btn-primary/.btn-secondary) */
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary), #cc0066);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 18px rgba(255,0,127,0.45);
+  border-radius: 30px;
+  padding: .65rem 1.4rem;
+}
+.btn-primary:hover { transform: translateY(-2px); }
+
+.btn-secondary {
+  background: linear-gradient(45deg, var(--secondary), #7a0fd1);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 18px rgba(160,32,240,0.35);
+  border-radius: 30px;
+  padding: .65rem 1.4rem;
+}
+
+/* Cards / glass effect: sólo en card / service-item / product-item */
+.card, .service-item, .product-item {
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(160,32,240,0.15);
+}
+
+/* Evitar convertir a glass todo .container-fluid */
+.container-fluid { background: transparent !important; }
+
+/* Owl-carousel dots (legible y con neón) */
+.testimonial-carousel .owl-dot {
+  background: rgba(255,255,255,0.12);
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform .18s, box-shadow .18s;
+}
+.testimonial-carousel .owl-dot.active {
+  background: var(--primary);
+  box-shadow: 0 0 12px var(--primary);
+  transform: scale(1.15);
+}
+
+/* Owl nav (flechas) */
+.owl-carousel .owl-nav .owl-prev,
+.owl-carousel .owl-nav .owl-next {
+  color: #fff !important;
+  background-color: rgba(0,0,0,0.45);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(0,0,0,0.25);
+}
+.owl-carousel .owl-nav .owl-prev:hover,
+.owl-carousel .owl-nav .owl-next:hover {
+  background-color: var(--secondary);
+}
+
+/* Portfolio filters */
+#portfolio-flters li {
+  color: var(--primary);
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  padding: .35rem .6rem;
+  border-radius: 6px;
+}
+#portfolio-flters li.active {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: #fff;
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* Links principales */
+a, .service-item a, .team-item a {
+  color: var(--primary);
+}
+a:hover { color: var(--secondary); text-decoration: none; }
+
+/* Reducir uso de selectors con [style*="..."] (son frágiles) - si tienes reglas inline, preferible corregir origen */
+*[style*="#F195B2"], *[style*="#f195b2"], *[style*="#62C3E7"], *[style*="#62c3e7"] {
+  /* Si querés forzar algo puntual, usar una versión muy concreta y con cuidado.
+     Pero lo mejor es eliminar estas reglas y cambiar la fuente (html) que inyecta esos colores. */
+  /* De momento no forzamos nada aquí para evitar efectos colaterales */
+}
+
+/* Animación sutil (titulo) */
+@keyframes glow {
+  0%,100% { text-shadow: 0 0 12px rgba(160,32,240,0.2); }
+  50% { text-shadow: 0 0 24px rgba(255,0,127,0.35); }
+}
+.section-title, h1 { animation: glow 4s ease-in-out infinite; }
+
+/* Ajustes responsive mínimos */
+@media (max-width: 768px) {
+  .btn-primary, .btn-secondary { padding: .5rem 1rem; font-size: .95rem; }
+  h1, .display-3, .display-4 { font-size: 1.8rem; }
+}
